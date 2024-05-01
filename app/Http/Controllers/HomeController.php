@@ -10,13 +10,23 @@ class HomeController extends Controller
 {
    public function index()
    {
-   // $users = User::paginate(10);
-    $users = User::all();
-        return view('home', compact('users'));
+        return view('home');
    }
 
    public function getUsers()
    {
-        return DataTables::of(User::query())->make(true);
+        return DataTables::of(User::query())
+        ->setRowId('id')
+        ->setRowAttr([
+            'align' => 'center',
+        ])
+        ->setRowClass(function ($user) {
+            return $user->id % 2 == 0 ? 'text-success' : 'text-warning';
+        })
+        ->editColumn('updated', function(User $user) {
+            return $user->created_at->difFforHumans();
+        })
+        ->addColumn('action', 'comp.action')
+        ->make(true);
    }
 }
