@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'current_team_id' => null,
         ]);
 
-         User::factory(1000)->create();
+         User::factory(10000)->create();
 
     }
 }

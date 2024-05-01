@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::controller(HomeController::class)->group(function(){
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('home');
+    Route::get('users', 'getUsers')->name('get.users');
 });
 
 Route::middleware([
