@@ -12,7 +12,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">DataTables</li>
+                <li class="breadcrumb-item active">Categories</li>
               </ol>
             </div>
           </div>
@@ -26,7 +26,8 @@
                     <div class="col-12">
                       <div class="card">
                         <div class="card-header">
-                          <h3 class="card-title">Users</h3>
+                          <h3 class="card-title">Categories</h3>
+                          <a href="{{ route('categories.create') }}">Create Category</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -35,8 +36,7 @@
                             <tr>
                               <th>ID</th>
                               <th>Name</th>
-                              <th>Email</th>
-                              <th>Updated</th>
+                              <th>Slug</th>
                               <th>Action</th>
                             </tr>
                             </thead>
@@ -68,12 +68,11 @@
       $("#example1").DataTable({
         processing:true,
         serverSide:true,
-        ajax:'{!! route('get.users') !!}',
+        ajax:'{!! route('categories.get.categories') !!}',
         columns: [
             { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },
-            { data: 'email', name: 'email' },
-            { data: 'updated', name: 'updated' },
+            { data: 'slug', name: 'slug' },
             { data: 'action', name: 'action' },
         ],
 

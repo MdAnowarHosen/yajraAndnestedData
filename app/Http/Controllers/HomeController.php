@@ -11,6 +11,7 @@ class HomeController extends Controller
    public function index()
    {
         return view('home');
+      //  return $dataTable->render('home');
    }
 
    public function getUsers()
@@ -29,4 +30,5 @@ class HomeController extends Controller
         ->addColumn('action', 'comp.action')
         ->make(true);
    }
+
 }
