@@ -25,6 +25,7 @@ Route::controller(CategoriesController::class)->prefix('categories')->name('cate
     Route::get('users', 'getCategories')->name('get.categories');
     Route::get('create', 'create')->name('create');
     Route::post('store', 'store')->name('store');
+    Route::get('all', 'all')->name('all');
 });
 
 Route::middleware([

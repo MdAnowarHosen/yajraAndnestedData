@@ -12,10 +12,29 @@
             @if (Session::has('success'))
                 <p class="alert alert-success mt-5 mx-2">Successfully category added!</p>
             @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <!-- form start -->
             <form action="{{ route('categories.store') }}" method="post">
                 @csrf
               <div class="card-body">
+                <div class="form-group">
+                    <label>Parent Category</label>
+                    <select class="form-control" name="parent">
+                      <option value="">No parent</option>
+                      @foreach ($data as $row)
+                      <option value="{{ $row->id }}">{{ $row->name }}</option>
+                      @endforeach
+
+                    </select>
+                  </div>
                 <div class="form-group">
                   <label for="Name">Name</label>
                   <input type="text" class="form-control" value="{{ old('name') }}" name="name" id="Name" placeholder="Enter name">

@@ -44,7 +44,22 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data as $key => $row)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->slug }}</td>
+                                    <td>
 
+
+
+    <small>{{ $row->ancestors->count() ? implode(' > ', $row->ancestors->pluck('name')->toArray()) : 'Top Level' }}</small><br>
+    {{ $row->name }}
+
+
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                           </table>
                         </div>
@@ -69,15 +84,15 @@
 <script>
     $(function () {
       $("#example1").DataTable({
-        processing:true,
-        serverSide:true,
-        ajax:'{!! route('categories.get.categories') !!}',
-        columns: [
-            { data: 'id', name: 'id' },
-            { data: 'name', name: 'name' },
-            { data: 'slug', name: 'slug' },
-            { data: 'action', name: 'action' },
-        ],
+        // processing:true,
+        // serverSide:true,
+        // ajax:'{!! route('categories.get.categories') !!}',
+        // columns: [
+        //     { data: 'id', name: 'id' },
+        //     { data: 'name', name: 'name' },
+        //     { data: 'slug', name: 'slug' },
+        //     { data: 'action', name: 'action' },
+        // ],
 
         "responsive": true, "lengthChange": false, "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
